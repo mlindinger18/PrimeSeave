@@ -11,15 +11,25 @@ package erasthotenes;
  */
 public class ErasthotenesPrimeSieve implements PrimeSieve {
 
-    public final int maximum;
-
     public ErasthotenesPrimeSieve() {
-        maximum = 30;
+
     }
 
     @Override
     public boolean isPrime(int p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean prime[] = new boolean[p + 1];
+        for (int i = 0; i <= p; i++) {
+            prime[i] = true;
+        }
+        for (int n = 2; n * n <= p; n++) {
+            if (prime[p] == true) {
+
+            }
+            for (int i = p * p; i <= n; i += p) {
+                prime[i] = false;
+            }
+        }
+        return false;
     }
 
     @Override
