@@ -16,7 +16,6 @@ public class ErasthotenesPrimeSieve implements PrimeSieve {
 
     public int number;
     public int og;
-    List<Integer> primes = new ArrayList<>();
 
     public ErasthotenesPrimeSieve(int number, int og) {
         this.number = number;
@@ -29,7 +28,7 @@ public class ErasthotenesPrimeSieve implements PrimeSieve {
         if (number <= 1) {
             return false;
         }
-        for (int i = 2; i < number; i++) {
+        for (int i = 2; i < og; i++) {
             if (number % i == 0) {
                 return false;
             }
@@ -49,12 +48,12 @@ public class ErasthotenesPrimeSieve implements PrimeSieve {
             }
 
             for (int j = 10; j <= o; j--) {
-                if (eps.isPrime(i) == true) {
+                if (eps.isPrime(j) == true) {
                     y = j;
                 }
                 n = x + y;
-                if (eps.isPrime(n) == true) {
-                    System.out.println(n);
+                if (n % 2 == 0) {
+                    System.out.println(n + "= " + x + "+ " + y);
                 }
             }
 
@@ -64,8 +63,14 @@ public class ErasthotenesPrimeSieve implements PrimeSieve {
 
     @Override
     public void printPrimes() {
-        System.out.println("Folgende Zahlen sind Primzahlen: ");
-        System.out.println("... " + ErasthotenesPrimeSieve.this.isPrime(100));
+        List<Integer> primes = new ArrayList<>();
+        for (int i = 2; i < og; i++) {
+            if (ErasthotenesPrimeSieve.this.isPrime(i) == true) {
+                primes.add(i);
+            }
+
+        }
+        System.out.println(primes);
     }
 
 }
